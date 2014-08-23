@@ -2,15 +2,15 @@
 
 <ul>
   <% @students.each do |student| %>
-    <li><%= student.name %></li>
+    <li>
+      <form action="/students/<%= student.id %>" method="post">
+        <input name="_method" type="hidden" value="patch">
+        <input id="name" name="student[name]" placeholder="<%= student.name %>">
+        <button>Update</button>
+      </form>
+    </li>
   <% end %>
 </ul>
-
-<form action="/students" method="post">
-  <input id="student_name" name="student[name]" placeholder="Enter New Name" type="text">
-  <button>Add</button>
-</form>
-
 
 <% if @student.errors.any?%>
   <h3>Please fix these errors:</h3>
@@ -20,5 +20,13 @@
     <% end %>
   </ul>
 <% end %>
+
+<form action="/students" method="post">
+  <input id="name" name="student[name]" placeholder="Enter New Name" type="text">
+  <button>Add</button>
+</form>
+
+
+
 
 
