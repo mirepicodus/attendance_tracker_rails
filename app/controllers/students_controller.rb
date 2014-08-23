@@ -4,9 +4,9 @@ class StudentsController < ApplicationController
     render('students/list.html.erb')
   end
 
-  def show
-    @student = Student.find(params[:id])
-    render('students/show.html.erb')
+  def create
+    @student = Student.create(params[:student])
+    redirect_to("/students")
   end
 
 end

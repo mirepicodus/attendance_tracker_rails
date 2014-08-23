@@ -5,3 +5,8 @@
     <li><%= student.name %></li>
   <% end %>
 </ul>
+
+<form action="/students" method="post">
+  <input id="student_name" name="student[name]" placeholder="Enter New Name" type="text">
+  <button>Add</button>
+</form>
