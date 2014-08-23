@@ -5,8 +5,11 @@ class StudentsController < ApplicationController
   end
 
   def create
-    @student = Student.create(params[:student])
-    redirect_to("/students")
+    @student = Student.new(params[:student])
+    if @student.save
+      flash[:notice] = "#{@student.name} has been saved."
+      redirect_to("/students")
+    end
   end
 
 end
