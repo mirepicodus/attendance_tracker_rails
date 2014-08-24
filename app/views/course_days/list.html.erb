@@ -5,3 +5,9 @@
     <li><%= course_day.date %></li>
   </ul>
 <%end%>
+
+<form action="/course_days" method="post">
+  <input id="date" name="course_day[date]" type="date">
+  <button>Add</button>
+</form>
+
