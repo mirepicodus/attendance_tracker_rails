@@ -1,4 +1,4 @@
 class Course < ActiveRecord::Base
+  has_many :course_days
   validates :name, presence: true
-  has_many :attendance_lists
 end

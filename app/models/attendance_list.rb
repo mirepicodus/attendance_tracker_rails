@@ -1,5 +1,4 @@
 class AttendanceList < ActiveRecord::Base
-  belongs_to :course
-  validates :date, presence: true
-  has_many :students
+  belongs_to :student
+  belongs_to :course_day
 end

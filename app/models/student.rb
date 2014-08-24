@@ -1,4 +1,5 @@
 class Student < ActiveRecord::Base
-  belongs_to :attendance_list
+  has_many :attendance_lists
+  has_many :course_days, through: :attendance_lists
   validates :name, presence: true
 end
