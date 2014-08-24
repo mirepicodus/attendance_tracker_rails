@@ -5,7 +5,13 @@ class CourseDaysController < ApplicationController
   end
 
   def create
-    CourseDay.create(params[:course_day])
-    redirect_to("/course_days")
+    @course_days = CourseDay.all
+    @course_day = CourseDay.new(params[:course_day])
+    if @course_day.save
+      flash[:notice] = "#{@course_day.date} has been saved."
+      redirect_to("/course_days")
+    else
+      render('course_days/list.html.erb')
+    end
   end
 end
