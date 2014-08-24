@@ -1,0 +1,5 @@
+<h1>Attendance Lists</h1>
+
+<% @attendance_lists.each do |attendance_list| %>
+  <li>Date: <%= attendance_list.course_day.date %>, Student: <%= attendance_list.student.name %></li>
+<%end%>
