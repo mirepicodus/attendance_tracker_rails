@@ -17,10 +17,13 @@ class CourseDaysController < ApplicationController
   end
 
   def edit
+    @course_days = CourseDay.all
     @course_day = CourseDay.find(params[:id])
     if @course_day.update(params[:course_day])
       flash[:notice] = "#{@course_day.date} has been updated."
       redirect_to("/course_days")
+    else
+      render("course_days/list.html.erb")
     end
   end
 end
