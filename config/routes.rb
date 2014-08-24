@@ -10,4 +10,5 @@ AttendanceTracker::Application.routes.draw do
   match('course_days/:id', {via: :delete, to: 'course_days#destroy'})
 
   match('attendance_lists', {via: :get, to: 'attendance_lists#list'})
+  match('attendance_lists', {via: :post, to: 'attendance_lists#create'})
 end

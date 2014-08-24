@@ -1,5 +1,21 @@
 <h1>Attendance Lists</h1>
 
 <% @attendance_lists.each do |attendance_list| %>
-  <li>Date: <%= attendance_list.course_day.date %>, Student: <%= attendance_list.student.name %></li>
+  <li>Date: <%= attendance_list.course_day.date %>, Student: <%= attendance_list.student.name %>, Attended: <%= attendance_list.attend %>, Partial: <%= attendance_list.partial %></li>
 <%end%>
+
+<form id="attendance_list" action="/attendance_lists" method="post">
+  <select form="attendance_list" name="attendance_list[course_day_id]">
+    <% @course_days.each do |course_day| %>
+      <option value ="<%=course_day.id %>"><%=course_day.date %></option>
+    <% end %>
+  </select>
+  <select form="attendance_list" name="attendance_list[student_id]">
+    <% @students.each do |student| %>
+      <option value ="<%=student.id %>"><%=student.name %></option>
+    <% end %>
+  </select>
+  <input form="attendance_list" type="checkbox" name="attendance_list[attend]" value="true">Attended
+  <input form="attendance_list" type="checkbox" name="attendance_list[partial]" value="true">Partial
+<button>Add</button>
+</form>
