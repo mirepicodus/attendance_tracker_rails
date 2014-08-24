@@ -9,7 +9,10 @@ class AttendanceListsController < ApplicationController
   def create
     @course_days = CourseDay.all
     @students = Student.all
-    AttendanceList.create(params[:attendance_list])
-    redirect_to("/attendance_lists")
+    @attendance_list = AttendanceList.new(params[:attendance_list])
+    if @attendance_list.save
+      flash[:notice] = "List has been saved"
+      redirect_to("/attendance_lists")
+    end
   end
 end
