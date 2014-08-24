@@ -2,7 +2,13 @@
 
 <% @course_days.each do |course_day| %>
   <ul>
-    <li><%= course_day.date %></li>
+    <li>
+      <form action="/course_days/<%= course_day.id %>" method="post">
+        <input name="_method" type="hidden" value="patch">
+        <input id="date" name="course_day[date]" type="date" value="<%= course_day.date %>">
+        <button>Update</button>
+      </form>
+    </li>
   </ul>
 <%end%>
 

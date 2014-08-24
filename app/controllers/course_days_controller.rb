@@ -15,4 +15,10 @@ class CourseDaysController < ApplicationController
       render('course_days/list.html.erb')
     end
   end
+
+  def edit
+    @course_day = CourseDay.find(params[:id])
+    @course_day.update(params[:course_day])
+    redirect_to("/course_days")
+  end
 end
