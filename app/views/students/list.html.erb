@@ -14,14 +14,7 @@
   <% end %>
 </ul>
 
-<% if @student.errors.any?%>
-  <h3>Please fix these errors:</h3>
-  <ul>
-    <% @student.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+<%= render('layouts/errors', :object => @student) %>
 
 <form action="/students" method="post">
   <input id="name" name="student[name]" placeholder="Enter New Name" type="text">

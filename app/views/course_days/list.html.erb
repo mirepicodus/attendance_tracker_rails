@@ -6,14 +6,7 @@
   </ul>
 <%end%>
 
-<% if @course_day.errors.any?%>
-  <h3>Please fix these errors:</h3>
-  <ul>
-    <% @course_day.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+<%= render('layouts/errors', :object => @course_day) %>
 
 <form action="/course_days" method="post">
   <input id="date" name="course_day[date]" type="date">
