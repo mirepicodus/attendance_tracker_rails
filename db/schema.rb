@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140824174220) do
+ActiveRecord::Schema.define(version: 20140824202829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 20140824174220) do
   create_table "attendance_lists", force: true do |t|
     t.integer "course_day_id"
     t.integer "student_id"
-    t.boolean "attend"
-    t.boolean "partial"
+    t.boolean "attend",        default: false
+    t.boolean "partial",       default: false
   end
 
   create_table "course_days", force: true do |t|
