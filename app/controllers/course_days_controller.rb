@@ -18,7 +18,9 @@ class CourseDaysController < ApplicationController
 
   def edit
     @course_day = CourseDay.find(params[:id])
-    @course_day.update(params[:course_day])
-    redirect_to("/course_days")
+    if @course_day.update(params[:course_day])
+      flash[:notice] = "#{@course_day.date} has been updated."
+      redirect_to("/course_days")
+    end
   end
 end
