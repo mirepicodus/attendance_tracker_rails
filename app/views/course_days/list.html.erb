@@ -6,6 +6,7 @@
       <form action="/course_days/<%= course_day.id %>" method="post">
         <input name="_method" type="hidden" value="patch">
         <input id="date" name="course_day[date]" type="date" value="<%= course_day.date %>">
+        <a href="/course_days/<%= course_day.id %>" data-confirm="You Sure?" data-method="delete" rel="nofollow"><button>Delete</button></a>
         <button>Update</button>
       </form>
     </li>

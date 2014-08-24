@@ -26,4 +26,10 @@ class CourseDaysController < ApplicationController
       render("course_days/list.html.erb")
     end
   end
+
+  def destroy
+    @course_day = CourseDay.find(params[:id])
+    @course_day.destroy
+    redirect_to("/course_days")
+  end
 end
