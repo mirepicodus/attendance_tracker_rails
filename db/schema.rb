@@ -11,21 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140824172527) do
+ActiveRecord::Schema.define(version: 20140824174220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "attendance_lists", force: true do |t|
-    t.integer "course_days_id"
-    t.integer "students_id"
+    t.integer "course_day_id"
+    t.integer "student_id"
     t.boolean "attend"
     t.boolean "partial"
   end
 
   create_table "course_days", force: true do |t|
     t.date    "date"
-    t.integer "courses_id"
+    t.integer "course_id"
   end
 
   create_table "courses", force: true do |t|
