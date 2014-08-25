@@ -2,16 +2,18 @@
 
 <% @attendance_lists.each do |attendance_list| %>
   <li>
-    <form id="attendance_list_edit" action="/attendance_lists/<%= attendance_list.id %>" method="post">
+    <form id="attendance_list_edit<%= attendance_list.id %>" action="/attendance_lists/<%= attendance_list.id %>" method="post">
       <input name="_method" type="hidden" value="patch">
-      <select form="attendance_list_edit" name="attendance_list[course_day_id]">
+      <select form="attendance_list_edit<%= attendance_list.id %>" name="attendance_list[course_day_id]">
         <% @course_days.each do |course_day| %>
-          <option value ="<%=course_day.id %>"><%=course_day.date %></option>
+          <% course_day.id == attendance_list.course_day.id ? selected_course_day = "selected" : selected_course_day = '' %>
+          <option value ="<%=course_day.id %>" <%= selected_course_day %>><%=course_day.date %></option>
         <% end %>
       </select>
-      <select form="attendance_list_edit" name="attendance_list[student_id]">
+      <select form="attendance_list_edit<%= attendance_list.id %>" name="attendance_list[student_id]">
         <% @students.each do |student| %>
-          <option value ="<%=student.id %>"><%=student.name %></option>
+          <% student.id == attendance_list.student.id ? selected_student = "selected" : selected_student = '' %>
+          <option value ="<%=student.id %>" <%= selected_student %>><%=student.name %></option>
         <% end %>
       </select>
       <input type="checkbox" name="attendance_list[attend]" value="true">Attended
@@ -39,5 +41,3 @@
   <input type="checkbox" name="attendance_list[partial]" value="true">Partial
 <button>Add</button>
 </form>
-
-
