@@ -9,10 +9,13 @@ class AttendanceListsController < ApplicationController
   def create
     @course_days = CourseDay.all
     @students = Student.all
+    @attendance_lists = AttendanceList.all
     @attendance_list = AttendanceList.new(params[:attendance_list])
     if @attendance_list.save
       flash[:notice] = "List has been saved"
       redirect_to("/attendance_lists")
+    else
+      render("attendance_lists/list.html.erb")
     end
   end
 end

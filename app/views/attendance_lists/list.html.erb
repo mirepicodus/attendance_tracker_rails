@@ -4,6 +4,8 @@
   <li>Date: <%= attendance_list.course_day.date %>, Student: <%= attendance_list.student.name %>, Attended: <%= attendance_list.attend %>, Partial: <%= attendance_list.partial %></li>
 <%end%>
 
+<%= render('layouts/errors', :object => @attendance_list) %>
+
 <form id="attendance_list" action="/attendance_lists" method="post">
   <select form="attendance_list" name="attendance_list[course_day_id]">
     <% @course_days.each do |course_day| %>
