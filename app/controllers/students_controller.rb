@@ -16,7 +16,7 @@ class StudentsController < ApplicationController
     end
   end
 
-  def update
+  def edit
     @students = Student.all
     @student = Student.find(params[:id])
     if @student.update(params[:student])

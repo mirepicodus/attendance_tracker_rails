@@ -3,6 +3,7 @@ class AttendanceListsController < ApplicationController
     @course_days = CourseDay.all
     @students = Student.all
     @attendance_lists = AttendanceList.all
+    @attendance_list = AttendanceList.new
     render("attendance_lists/list.html.erb")
   end
 
@@ -17,5 +18,24 @@ class AttendanceListsController < ApplicationController
     else
       render("attendance_lists/list.html.erb")
     end
+  end
+
+  def edit
+    @course_days = CourseDay.all
+    @students = Student.all
+    @attendance_lists = AttendanceList.all
+    @attendance_list = AttendanceList.find(params[:id])
+    if @attendance_list.update(params[:attendance_list])
+      flash[:notice] = "#{@attendance_list.name} has been updated."
+      redirect_to("/attendance_lists")
+    else
+      render("attendance_lists/list.html.erb")
+    end
+  end
+
+  def destroy
+    @attendance_list = AttendanceList.find(params[:id])
+    @attendance_list.destroy
+    redirect_to("/attendance_lists")
   end
 end

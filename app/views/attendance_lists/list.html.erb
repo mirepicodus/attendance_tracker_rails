@@ -1,7 +1,25 @@
 <h1>Attendance Lists</h1>
 
 <% @attendance_lists.each do |attendance_list| %>
-  <li>Date: <%= attendance_list.course_day.date %>, Student: <%= attendance_list.student.name %>, Attended: <%= attendance_list.attend %>, Partial: <%= attendance_list.partial %></li>
+  <li>
+    <form id="attendance_list_edit" action="/attendance_lists/<%= attendance_list.id %>" method="post">
+      <input name="_method" type="hidden" value="patch">
+      <select form="attendance_list_edit" name="attendance_list[course_day_id]">
+        <% @course_days.each do |course_day| %>
+          <option value ="<%=course_day.id %>"><%=course_day.date %></option>
+        <% end %>
+      </select>
+      <select form="attendance_list_edit" name="attendance_list[student_id]">
+        <% @students.each do |student| %>
+          <option value ="<%=student.id %>"><%=student.name %></option>
+        <% end %>
+      </select>
+      <input type="checkbox" name="attendance_list[attend]" value="true">Attended
+      <input type="checkbox" name="attendance_list[partial]" value="true">Partial
+    <button>Update</button>
+    <a href="/attendance_lists/<%=attendance_list.id%>" data-confirm="You Sure?" data-method="delete" rel="nofollow"><button>Delete</button></a>
+    </form>
+  </li>
 <%end%>
 
 <%= render('layouts/errors', :object => @attendance_list) %>
@@ -17,7 +35,9 @@
       <option value ="<%=student.id %>"><%=student.name %></option>
     <% end %>
   </select>
-  <input form="attendance_list" type="checkbox" name="attendance_list[attend]" value="true">Attended
-  <input form="attendance_list" type="checkbox" name="attendance_list[partial]" value="true">Partial
+  <input type="checkbox" name="attendance_list[attend]" value="true">Attended
+  <input type="checkbox" name="attendance_list[partial]" value="true">Partial
 <button>Add</button>
 </form>
+
+
