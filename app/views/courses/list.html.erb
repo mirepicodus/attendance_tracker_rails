@@ -7,6 +7,7 @@
         <input name="_method" type="hidden" value="patch">
         <input id="date" name="course[name]" type="text" value="<%= course.name %>">
         <button>Update</button>
+        <a href="/<%= course.id %>" data-confirm="You Sure?" data-method="delete" rel="nofollow"><button>Delete</button></a>
       </form>
     </li>
   </ul>

@@ -2,6 +2,7 @@ AttendanceTracker::Application.routes.draw do
   match('/', {via: :get, to: 'courses#list'})
   match('/', {via: :post, to: 'courses#create'})
   match('/:id', {via: [:patch, :put], to: 'courses#edit'})
+  match('/:id', {via: :delete, to: 'courses#destroy'})
 
   match('students', {via: :get, to: 'students#list'})
   match('students', {via: :post, to: 'students#create'})
