@@ -2,9 +2,15 @@
 
 <% @courses.each do |course| %>
   <ul>
-    <li><%= course.name %></li>
+    <li>
+      <form action="/<%= course.id %>" method="post">
+        <input name="_method" type="hidden" value="patch">
+        <input id="date" name="course[name]" type="text" value="<%= course.name %>">
+        <button>Update</button>
+      </form>
+    </li>
   </ul>
-<% end %>
+<%end%>
 
 <%= render('layouts/errors', :object => @course) %>
 

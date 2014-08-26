@@ -16,4 +16,15 @@ class CoursesController < ApplicationController
     end
   end
 
+  def edit
+    @courses = Course.all
+    @course = Course.find(params[:id])
+    if @course.update(params[:course])
+      flash[:notice] = "#{@course.name} has been updated."
+      redirect_to("/")
+    else
+      render("courses/list.html.erb")
+    end
+  end
+
 end
