@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
   def list
+    @course = Course.new
     @courses = Course.all
     render('courses/list.html.erb')
   end
@@ -11,7 +12,7 @@ class CoursesController < ApplicationController
       flash[:notice] = "#{@course.name} has been saved."
       redirect_to("/")
     else
-      render('course/list.html.erb')
+      render('courses/list.html.erb')
     end
   end
 
