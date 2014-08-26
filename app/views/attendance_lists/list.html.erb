@@ -16,8 +16,12 @@
           <option value ="<%=student.id %>" <%= selected_student %>><%=student.name %></option>
         <% end %>
       </select>
-      <input type="checkbox" name="attendance_list[attend]" value="true">Attended
-      <input type="checkbox" name="attendance_list[partial]" value="true">Partial
+      <input name="attendance_list[attend]" type="hidden" value="false" />
+      <% attendance_list.attend ? checked_attend = "checked" : checked_attend = '' %>
+      <input id="attendance_list_attend" name="attendance_list[attend]" type="checkbox" value="true" <%= checked_attend %>/>Attended
+      <input name="attendance_list[partial]" type="hidden" value="false" />
+      <% attendance_list.partial ? checked_partial = "checked" : checked_partial = '' %>
+      <input id="attendance_list_partial" name="attendance_list[partial]" type="checkbox" value="true" <%= checked_partial %>/>Partial
     <button>Update</button>
     <a href="/attendance_lists/<%=attendance_list.id%>" data-confirm="You Sure?" data-method="delete" rel="nofollow"><button>Delete</button></a>
     </form>
