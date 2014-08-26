@@ -3,8 +3,11 @@
 This program has courses, days in course, attendance list and students to track student attendance. WIP
 
 Install the program by cloning it, running bundle, creating a database, and running the migrations.
+Found at [Heroku] (http://attendance-tracker.herokuapp.com/).
 
-###Authored by MIRE
+
+###Authored by [MIRE] (https://github.com/mirepicodus)
 8/25/14
 
 MIT License
+
